@@ -1,0 +1,82 @@
+header {
+    align-content: center;
+    width: 980px;
+    height: 100px;
+    background: cornflowerblue;
+}
+body {
+    background-image: url("Picture/Anhnen.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.Total {
+    width: 980px;
+    margin: 0 auto;
+}
+footer {
+    width: 980px;
+    height: 50px;
+    background: cornflowerblue;
+    text-align: center;
+    padding-top: 30px;
+
+}
+.phanthan {
+    width: 980px;
+    height: 600px;
+
+    background-size: cover;
+    background-color: aliceblue;
+}
+.listname {
+    padding-top: 10px;
+    background: cadetblue;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+
+
+}
+.left {
+
+    width: 300px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.right {
+    background: bisque;
+    width: 500px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+#result {
+    text-align: center;
+    width:500px;
+    
+}
+td {
+    height: 30px;
+}
+.button input {
+    width: 50px;
+    height: 30px;
+}
+#input {
+    width: 300px;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+select {
+    width: 154px;
+    height: 25px;
+}
+

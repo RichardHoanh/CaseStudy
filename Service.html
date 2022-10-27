@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service</title>
+    <link rel="stylesheet" href="ServiceCSS.css">
+</head>
+<body>
+<div class="Total">
+    <header>
+        <td><img src="Picture/Hoành%20Đoàn.png"></td>
+    </header>
+    <nav>
+
+    </nav>
+    <div class="phanthan">
+
+        <div class="listname"><b>Quản lý đặt phòng</b></div>
+        <div class="left">
+            <table id="input" border="1">
+                <tr>
+                    <td>Stt</td>
+                    <td><input id="num" type="number" style="height: 25px" ></td>
+                </tr>
+                <tr>
+                    <td>Địa điểm</td>
+                    <td>
+                        <select id="place">
+                            <option>Hà Nội</option>
+                            <option>Nam Định</option>
+                            <option>Hải Phòng</option>
+                            <option>Quảng Ninh</option>
+                            <option>Hồ Chí Minh</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Loại phòng</td>
+
+                    <td>
+                        <select id="room">
+                            <option>Phòng đơn</option>
+                            <option>Phòng đôi</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phương tiện</td>
+                    <td>
+                        <select id="vehicle">
+                            <option>Ô tô</option>
+                            <option>Máy bay</option>
+                        </select>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="button">
+                <input type="button" onclick="them()" value="Add">
+                <input type="button" onclick="update()" value="Save">
+            </div>
+
+        </div>
+        <div class="right">
+            <table border="1" id="result"></table>
+        </div>
+
+
+    </div>
+    <footer>
+        Tổng giám đốc: Đoàn Trọng Hoành
+    </footer>
+</div>
+</body>
+</html>
+<script>
+    class Book {
+        num;
+        place;
+        room;
+        vehicle;
+
+        constructor(num, place, room, vehicle) {
+            this.num = num;
+            this.place = place;
+            this.room = room;
+            this.vehicle = vehicle;
+        }
+
+        edit(place, room, vehicle) {
+            this.place = place;
+            this.room = room;
+            this.vehicle = vehicle;
+        }
+    }
+
+    class BookingManagement {
+        books;
+
+        constructor() {
+            this.books = [];
+        }
+
+        showList() {
+            return this.books;
+        }
+
+        addRoom(value) {
+            this.books.push(value);
+        }
+
+        deleteRoom(num) {
+            let book = this.findRoom(num)
+            if (book) {
+                let index = this.books.indexOf(book);
+                this.books.splice(index, 1);
+            }
+        }
+
+        findRoom(num) {
+            for (let i = 0; i < this.books.length; i++) {
+                let book = this.books[i];
+                if (book.num === num) {
+                    return book;
+                }
+            }
+            return undefined;
+        }
+
+        editRoom(num, place, room, vehicle) {
+            let book = this.findRoom(num);
+            if (book) {
+                book.edit(place, room, vehicle);
+            }
+        }
+    }
+
+    let manage = new BookingManagement();
+    const RESULT_ELEMENT = document.getElementById("result");
+
+    function hien() {
+        let books = manage.showList();
+        let table = "  <tr>\n" +
+            "                    <td><b>Stt</b></td>\n" +
+            "                    <td><b>Địa điểm</b></td>\n" +
+            "                    <td><b>Loại phòng</b></td>\n" +
+            "                    <td><b>Phương tiện</b></td>\n" +
+            "                    <td colspan=\"2\">\n" +
+            "                        <b>Tùy chọn</b>\n" +
+            "                    </td>\n" +
+            "                </tr>";
+
+        for (let i = 0; i < books.length; i++) {
+            table += '<tr>';
+
+            table += '<td>';
+            table += books[i].num;
+            table += '</td>';
+
+            table += '<td>';
+            table += books[i].place;
+            table += '</td>';
+
+            table += '<td>';
+            table += books[i].room;
+            table += '</td>';
+
+            table += '<td>';
+            table += books[i].vehicle;
+            table += '</td>';
+
+            table += '<td>' +
+                '<button style="background-color: red; color: white "  type="button" onclick="xoa(' + books[i].num + ')">Delete</button> '
+              + '</td>';
+            table += '<td>' +
+                ' <button  style="background-color: orange ; color: white" type="button" onclick="sua(' + books[i].num + ')">Edit</button>'
+                + '</td>';
+
+            table += '</tr>';
+        }
+        RESULT_ELEMENT.innerHTML = table;
+    }
+
+    function clear() {
+        document.getElementById("num").value = "";
+        document.getElementById("place").value = "";
+        document.getElementById("room").value = "";
+        document.getElementById("vehicle").value = "";
+    }
+
+    function them() {
+        let num = parseInt(document.getElementById("num").value);
+        let place = document.getElementById("place").value;
+        let room = document.getElementById("room").value;
+        let vehicle = document.getElementById("vehicle").value;
+
+        let book = new Book(num, place, room, vehicle);
+        manage.addRoom(book);
+        hien();
+        clear();
+    }
+
+    let stt = 0;
+
+    function sua(num) {
+        let book = manage.findRoom(num);
+        document.getElementById("num").value = book.num;
+        document.getElementById("place").value = book.place;
+        document.getElementById("room").value = book.room;
+        document.getElementById("vehicle").value = book.vehicle;
+    }
+
+    function xoa(num) {
+        manage.deleteRoom(num);
+        hien();
+    }
+
+    function update() {
+        let num = parseInt(document.getElementById("num").value);
+        let place = document.getElementById("place").value;
+        let room = document.getElementById("room").value;
+        let vehicle = document.getElementById("vehicle").value;
+
+        manage.editRoom(num, place, room, vehicle)
+        hien();
+        clear();
+    }
+
+    hien();
+</script>

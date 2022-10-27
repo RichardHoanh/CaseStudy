@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Food and travel amazing</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="ModalloginCSS.css">
+
+
+</head>
+<body>
+
+
+<div class="Total">
+    <header>
+
+        <img src="Picture/Hoành%20Đoàn.png" width="347" style="margin:0px">
+
+    </header>
+    <nav>
+        <div class="menu">
+            <a href="url">Trang chủ</a>
+            <a href="url">Thông tin</a>
+            <a href="Service.html">Dịch vụ</a>
+            <a href="url">Liên hệ</a>
+        </div>
+        <div class="form">
+            <a href="formRegister.html">Đăng kí</a>
+            <a id="login">Đăng nhập</a>
+
+
+        </div>
+        <div>
+            <div id="Modallogin" class="modal">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h2>Đăng nhập</h2>
+                    </div>
+                    <div class="Login">
+                        <div class="formclass">
+                            <table>
+                                <tr>
+                                    <td><label>Username</label></td>
+                                    <td><input placeholder="Nhập tên"></td>
+                                </tr>
+                                <tr>
+                                    <td><label>Password</label></td>
+                                    <td><input type="password" placeholder="Nhập mật khẩu"></td>
+                                </tr>
+                            </table>
+
+                            <div class="cuoi">
+                                <button>Đăng nhập</button>
+                                <br>
+                                <p>Bạn chưa có tài khoản? Đăng ký <a href="formRegister.html" style="text-decoration: none;color: rgba(14,48,227,0.77)" >Tại đây</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </nav>
+    <div class="phanthan"></div>
+    <footer>
+        Tổng giám đốc: Đoàn Trọng Hoành
+    </footer>
+
+</div>
+
+<script>
+    var modal = document.getElementById("Modallogin");
+    var btn = document.getElementById("login");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
