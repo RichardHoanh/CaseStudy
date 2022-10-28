@@ -49,21 +49,28 @@ nav a:hover {
     background-color: aqua;
     color: black;
 }
-footer {
 
-    width: 980px;
-    height: 50px;
-    background: cornflowerblue;
-    text-align: center;
-
-    padding-top: 30px;
-
-}
 .phanthan {
     width: 980px;
     height: 550px;
-    background-color: bisque;
+    background-image: url("Picture/AnhEDE.png");
+    background-size: 100%;
+}
+footer {
+    color: #fefefe;
+    width: 980px;
+    height: 150px;
+    background: cornflowerblue;
+    text-align: center;
+    padding-top: 20px;
 
+    
+
+}
+#company {
+    width: 900px;
+    height: 50px;
+    margin: auto;
 }
 
 

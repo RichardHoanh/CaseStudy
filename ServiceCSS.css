@@ -2,7 +2,9 @@ header {
     align-content: center;
     width: 980px;
     height: 100px;
-    background: cornflowerblue;
+
+    background-image: url("Picture/Footer4.jpg");
+    background-size: 100%;
 }
 body {
     background-image: url("Picture/Anhnen.jpg");
@@ -28,6 +30,7 @@ footer {
 
 }
 .phanthan {
+
     width: 980px;
     height: 600px;
 

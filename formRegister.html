@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <title>Register</title>
     <style>
@@ -57,42 +59,85 @@
 </head>
 <body>
 <div class="Register">
-    <form class="bieu">
+    <div class="bieu">
+
         <h1 style="margin-bottom: 40px">Đăng ký tài khoản</h1>
         <table>
             <tr>
-                <td><label>Tên</label></td>
-                <td><input></td>
+                <td><label>Tên đăng nhập</label></td>
+                <td><input type="text"  id="username"></td>
+            </tr>
+
+            <tr>
+                <td><label >Mật khẩu</label></td>
+                <td><input type="password" id="password"></td>
+            </tr>
+
+            <tr>
+                <td><label >Xác nhận mật khẩu</label></td>
+                <td><input type="password" id="confirmpassword"></td>
+            </tr>
+
+            <tr>
+                <td><label >Email</label></td>
+                <td><input type="text" id="email"></td>
+            </tr>
+
+            <tr>
+                <td><label >Số điện thoại</label></td>
+                <td><input type="text" id="phone"> </td>
             </tr>
             <tr>
-                <td><label>Email</label></td>
-                <td><input></td>
-            </tr>
-            <tr>
-                <td><label>Mật khẩu</label></td>
-                <td><input></td>
-            </tr>
-            <tr>
-                <td><label>Xác nhận mật khẩu</label></td>
-                <td><input></td>
-            </tr>
-            <tr>
-                <td><label>Số điện thoại</label></td>
-                <td><input></td>
-            </tr>
-            <tr>
-                <td><label>Địa chỉ</label></td>
-                <td><input></td>
+                <td><label >Địa chỉ</label></td>
+                <td><input type="text" id="address"></td>
             </tr>
         </table>
         <div class="nutnhan">
-            <button type="submit">Tạo tài khoản</button>
+            <button onclick="register()">Tạo tài khoản</button>
             <button type="reset">Hủy</button>
         </div>
 
-    </form>
-
+    </div>
 </div>
 
 </body>
 </html>
+<script>
+    class Account {
+        username;
+        password;
+        confirmpassword;
+        email;
+        phone;
+        address;
+
+        constructor(username, password, confirmpassword, email, phone, address) {
+            this.username = username;
+            this.password = password;
+            this.confirmpassword = confirmpassword;
+            this.email = email;
+            this.phone = phone;
+            this.address = address;
+        }
+    }
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+    if (accounts === null) {
+        accounts = [];
+    }
+
+    function register() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        let confirmpassword = document.getElementById("confirmpassword").value;
+        let email = document.getElementById("email").value;
+        let phone = document.getElementById("phone").value;
+        let address = document.getElementById("address").value;
+
+        let account = new Account(username, password, confirmpassword, email, phone, address);
+        accounts.push(account);
+        localStorage.setItem("accounts", JSON.stringify(accounts));
+        window.location.href = "Index.html";
+    }
+
+
+</script>

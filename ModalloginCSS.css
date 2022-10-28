@@ -69,6 +69,7 @@ body {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+    height: 70px;
 }
 .formclass {
     margin-top: 20px;
@@ -88,5 +89,8 @@ width: 100px;
    margin-bottom: 20px;
 }
 .cuoi {
+    padding-top: 20px;
+}
+h2 {
     padding-top: 20px;
 }

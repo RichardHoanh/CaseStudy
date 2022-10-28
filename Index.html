@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="ModalloginCSS.css">
 
-
 </head>
 <body>
 
@@ -28,7 +27,6 @@
             <a href="formRegister.html">Đăng kí</a>
             <a id="login">Đăng nhập</a>
 
-
         </div>
         <div>
             <div id="Modallogin" class="modal">
@@ -43,16 +41,16 @@
                             <table>
                                 <tr>
                                     <td><label>Username</label></td>
-                                    <td><input placeholder="Nhập tên"></td>
+                                    <td><input placeholder="Nhập tên" id="username"></td>
                                 </tr>
                                 <tr>
                                     <td><label>Password</label></td>
-                                    <td><input type="password" placeholder="Nhập mật khẩu"></td>
+                                    <td><input type="password" placeholder="Nhập mật khẩu" id="password"></td>
                                 </tr>
                             </table>
 
                             <div class="cuoi">
-                                <button>Đăng nhập</button>
+                                <button onclick="login()">Đăng nhập</button>
                                 <br>
                                 <p>Bạn chưa có tài khoản? Đăng ký <a href="formRegister.html" style="text-decoration: none;color: rgba(14,48,227,0.77)" >Tại đây</a></p>
                             </div>
@@ -66,7 +64,26 @@
     </nav>
     <div class="phanthan"></div>
     <footer>
-        Tổng giám đốc: Đoàn Trọng Hoành
+        <table id="company">
+            <tr>
+
+                <td><b>Văn phòng Hà Nội</b></td>
+                <td><b>Văn phòng Đà Nẵng</b></td>
+                <td><b>Văn phòng TP Hồ Chí Minh</b></td>
+            </tr>
+            <tr>
+
+                <td>1000 Nguyễn Du, P. Nguyễn Du, Q. Hai Bà Trưng, Hà Nội</td>
+                <td>1000 Trường Chinh, P. An khê, Q. Thanh Khê, Đà Nẵng</td>
+                <td>1000 Điện Biên Phủ, P. 25, Q. Bình Thạnh, TP. Hồ Chí Minh</td>
+            </tr>
+            <tr>
+
+                <td>0101010101</td>
+                <td>0202020202</td>
+                <td>0303030303</td>
+            </tr>
+        </table>
     </footer>
 
 </div>
@@ -87,6 +104,28 @@
         }
     }
 </script>
+
+<script>
+    let accounts = JSON.parse(localStorage.getItem("accounts"));
+    if (accounts === null){
+        accounts = [];
+    }
+    function login() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        for (let i = 0; i < accounts.length; i++) {
+            if (accounts[i].username === username && accounts[i].password === password){
+                alert("Welcome")
+                location.href = "Index.html";
+                return;
+            }
+        }
+        alert("Tên đăng nhập hoặc mật khẩu không đúng")
+    }
+</script>
+
+
+<script src="ClassAccount.js"></script>
 </body>
 
 </html>
